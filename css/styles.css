@@ -1,13 +1,267 @@
-img {
-    max-width: 100%;
+body {
+	background: #53507E;
 }
-.searchbar{
-    margin-bottom: 50px;
+.header {
+	height: 37px;
+	margin-top: 30px;
+	text-align: center;
+	margin-bottom: 40px;
 }
-.bio{
-    padding: 30px;
+.header .logo{
+	height: 37px;
+	margin-top: 12px;
+	
+}
+.header .nav li a {
+	font-family: 'Raleway',sans-seif;
+	font-weight: 800;
+	font-size: 12px;
+	color: #B1AEDE;
+	margin-left: 35px;
+	margin-top: 12px;
 }
 
-.link{
-    margin-top: 10px;
+.header .nav li :hover{
+	color: white;
+	background-color: #53507E;
+}
+
+.header .nav .active a{
+	color: white;
+	border-bottom: 2px solid #FF8ED8;
+	background-color: #53507E;
+}
+	
+.main-left img{
+	width: 100%;
+}
+
+
+.main-right .headline{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 800;
+	font-size: 52px;
+	color: white;
+	line-height: 56px;
+	margin-bottom: 35px;
+}
+
+.main-right .subtext{
+	font-family: 'Roboto Slab', serif;
+	font-weight: 400;
+	font-size: 20px;
+	color: #B1AEDE;
+	margin-bottom: 120px;
+}
+
+.main-right .btn{
+	height: 80px;
+	padding: 30px 45px;
+	border-radius: 40px;
+	box-shadow: 0 0 30px rgba(255,142,216,.75);
+	background-color: #FF8ED8;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 800;
+	font-size: 24px;
+	color: white;
+}
+
+.main-right .btn:hover{
+	box-shadow: 0 0 30px rgba(64,61,101,0.75);
+	color: #403D65;
+}
+
+footer{
+	margin-top: 100px;
+	height: 105px;
+	background-color: #403D65;
+}
+
+footer .top-row{
+	height: 34px;
+	padding: 10px 0;
+}
+footer .top-row .nav li a{
+	float: left;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 800;
+	font-size: 12px;
+	color: #B1AEDE;
+}
+
+footer .top-row .nav :hover{
+	color: white;
+	background-color: inherit
+}
+footer .top-row .social img{
+	float:right;
+	width: 34px;
+	margin-left: 10px;
+}
+
+footer .bottom-row{
+	height: 35px;
+	margin-top: 15px;
+	font-family: 'Roboto Slab', serif;
+	font-weight: 600;
+	font-size: 12px;
+	color: #B1AEDE;
+	text-align: center;
+}
+
+.nav li a{
+	text-transform: uppercase;
+}
+
+.title-section {
+    width: 800px;
+    padding: 30px;
+    margin: 0 auto 30px;
+}
+.title-section h1{
+    color: white;
+    font-size: 36px;
+    font-weight: 800;
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+
+.about-section {
+	width: 750px;
+	padding: 80px;
+	margin: 0 auto 90px;
+	background-color: white;
+	box-shadow: 0 0 100px rgba(255,255,255,.75);
+}
+.about-section .title{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 800;
+	font-size: 24px;
+	color: #FF8ED8;
+	margin-bottom: 35px;
+}
+.about-section .body{
+	font-family: 'Roboto Slab', serif;
+	font-weight: 400;
+	font-size: 18px;
+	color: #5C4C4C;
+	max-width: 480px;
+}
+
+.about-section.leftimg{
+	padding: 80px 80px 80px 180px;
+	position: relative;
+}
+.about-section img{
+	width: 208px;
+	position: absolute;
+	top: -40px;
+	border: 20px solid white;
+	border-radius: 50%;
+}
+
+.about-section.leftimg img{
+	left: -70px;
+}
+.about-section.leftimg .title{
+	font-size: 24px;
+	margin-bottom: 35px;
+}
+.about-section .title .name{
+	color: #5C5C5C;
+}
+
+.about-section.rightimg{
+	padding: 80px 180px 80px 80px;
+	position: relative;
+}
+.about-section.rightimg img{
+	right: -70px;
+}
+.about-section.rightimg .title{
+	text-align: right;
+}
+.about-section.rightimg .body{
+	text-align: right;
+}
+
+.about-section .title .name,.about-section .title .job-title{
+	display: inline;
+}
+
+.contact-form{
+	width: 500px;
+	margin: 0 auto;
+}
+.contact-form .input{
+	border: none;
+	border-bottom: 2px solid white;
+	height: 35px;
+	margin-top: 30px;
+	background: none;
+	font-family: 'Roboto Slab', serif;
+	font-weight: 700;
+	font-size: 18px;
+	color: white;
+	padding-left: 0;
+	width: 100%;
+}
+.contact-form .input:placeholder{
+	color: #B1AEDE;
+}
+.contact-form .input.i1{
+	width: 45%;
+	float: left;
+}
+.contact-form .input.i2{
+	width: 45%;
+	float: right;
+}
+
+.contact-form .button{
+	height: 60px;
+	padding: 20px 45px;
+	border-radius: 30px;
+	box-shadow: 0 0 30px rgba(255,142,216,0.75);
+	background-color: #FF8ED8;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 800;
+	font-size: 18px;
+	color: white;
+	text-transform: uppercase;
+	margin: 50px auto 0;
+	border: none;
+	display: block;
+}
+.contact-form .button:hover{
+	box-shadow: 0 0 30px rgba(64, 61, 101, 0.75);
+	color: #403D65;
+}
+
+
+@keyframes example {
+    0%   {width: 100%; background-color: red; left:0px; top:0px;}
+    25%  {background-color: yellow; left:200px; top:0px;}
+    50%  {width: 80%; background-color: blue; left:200px; top:200px;}
+    75%  {background-color: green; left:0px; top:200px;}
+    100% {width: 100%; background-color: red; left:0px; top:0px;}
+}
+@keyframes test {
+    0%   {left:-5px; top:-5px;}
+    25%  {left:5px; top:-5px;}
+    50%  {left:-5px; top:5px;}
+    75%  {left:5px; top:5px;}
+    100% {left:-5px; top:-5px;}
+}
+
+/* The element to apply the animation to */
+@media screen and (min-width: 992px){
+	.main-left img {
+	    animation-name: test;
+	    animation-duration: 4s;
+	    animation-iteration-count: infinite;
+	    position: absolute;
+	}
 }

@@ -11,9 +11,10 @@ app.set('views', __dirname+'/views');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
-app.get('/', function (req, res) {
+app.get('\/((index\.html)?)', function (req, res) {
   res.render("./index.html");
 });
+
 
 app.get('/css/:path', function (req, res) {
   res.sendFile(__dirname + '/css/' + req.params.path);
@@ -21,6 +22,9 @@ app.get('/css/:path', function (req, res) {
 
 app.get('/js/:path', function (req, res) {
   res.sendFile(__dirname + '/js/' + req.params.path);
+});
+app.get('/images/:path', function (req, res) {
+  res.sendFile(__dirname + '/images/' + req.params.path);
 });
 
 app.use(function (req, res, next) {
