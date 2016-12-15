@@ -20,7 +20,8 @@ app.get('\/((index\.html)?)', function (req, res) {
 var pg = require('pg');
 
 app.get('/db', function (request, response) {
-	console.log(process.env.DATABASE_URL);
+  response.render("./index.html");
+	/*console.log(process.env.DATABASE_URL);
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM posts', function(err, result) {
       done();
@@ -29,10 +30,10 @@ app.get('/db', function (request, response) {
        { console.error(err); response.send("Error from db " + err); }
       else
        { 
-  response.render("./index.html");//response.send("/db.html"/*, {results: result.rows} */); 
+  response.render("./index.html");//response.send("/db.html"/*, {results: result.rows} * /); 
 }
     });
-  });
+  });*/
 });
 
 app.get('/css/:path', function (req, res) {
