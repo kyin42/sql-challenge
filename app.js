@@ -29,7 +29,7 @@ app.get('/db', function (request, response) {
        { console.error(err); response.send("Error from db " + err); }
       else
        { 
-  res.render("./index.html");//response.send("/db.html"/*, {results: result.rows} */); 
+  response.render("./index.html");//response.send("/db.html"/*, {results: result.rows} */); 
 }
     });
   });
