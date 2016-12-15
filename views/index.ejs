@@ -34,14 +34,18 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="about-section">
-                <div class="title">A BIT ABOUT US</div>
-                <div class="body">
-                    We are a super trustworthy, and not creepy in any way, company filled with love for green paper. Established in 2015, we gained support quickly and our wonderful Kool-aid started changing lives. We wanted to thank all of our supporters, even though they aren't with us anymore.
+        <% if(dbsuccess){ %>
+            <% for(var i=0; i<results.length; i++) { %>
+                <div class="row">
+                    <div class="about-section">
+                        <div class="title"><%= results[i].name %></div>
+                        <div class="body">
+                            <%= results[i].content %>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            <% } %>
+        <% } %>
     </div>
         <footer class="footer">
             <div class="container">

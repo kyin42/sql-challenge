@@ -16,6 +16,18 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.get('\/((index\.html)?)', function (req, res) {
+	pg.connect(process.env.DATABASE_URL, function(err, client, done){
+		client.query('SELECT * FROM posts',function(err, result){
+			done();
+			console.log(result.rows[0]);
+			if(err){
+				console.error(err);
+				response.send("Error from db " + err);
+			} else{
+  				res.render("./db.ejs", {results: result.rows});
+			}
+		});
+	});
   res.render("./index.ejs");
 });
 var pg = require('pg');
