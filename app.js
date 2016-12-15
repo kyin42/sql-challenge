@@ -17,7 +17,7 @@ app.get('\/((index\.html)?)', function (req, res) {
   res.render("./index.html");
 });
 
-var pg = require('pg');
+//var pg = require('pg');
 
 app.get('/db', function (request, response) {
   response.render("./index.html");
