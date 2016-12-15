@@ -6,8 +6,8 @@ CREATE DATABASE blog;
 CREATE TABLE posts (
   ID SERIAL PRIMARY KEY,
   name VARCHAR,
-  content TEXT,
+  content TEXT
 );
 
-INSERT INTO pups (name, content)
+INSERT INTO posts (name, content)
   VALUES ('Test post', 'test post content');
