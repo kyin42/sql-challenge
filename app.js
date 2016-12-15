@@ -29,7 +29,7 @@ app.get('\/db', function (req, res) {
 				console.error(err);
 				response.send("Error from db " + err);
 			} else{
-  				res.render("./index.ejs");
+  				res.render("./db.ejs", {results: result.rows});
 			}
 		});
 	});
