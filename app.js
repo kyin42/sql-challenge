@@ -4,6 +4,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
+app.set('port', (process.env.PORT || 3000));
+
 app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'ejs');
 app.set('views', __dirname+'/views');
