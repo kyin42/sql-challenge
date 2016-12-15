@@ -6,25 +6,27 @@ var bodyParser = require('body-parser');
 
 app.set('port', (process.env.PORT || 3000));
 
+var ejs = require('ejs');
 
 app.use(express.static(__dirname + '/views'));
-app.configure(function(){
-    app.use(express.static(path.join(__dirname, 'views')));
-});
-app.set('view engine', 'ejs');
+app.set('view engine', ejs);
 app.set('views', __dirname+'/views');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.get('\/((index\.html)?)', function (req, res) {
-  res.render("./index.html");
+  res.render("./index.ejs");
+});
+
+app.get('\/db', function (req, res) {
+  res.render("./index.ejs");
 });
 
 //var pg = require('pg');
 
-app.get('/db', function (request, response) {
-  response.render("./index.html");
+/*app.get('/db', function (req, res) {
+  response.render("./index.ejs");
 	/*console.log(process.env.DATABASE_URL);
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM posts', function(err, result) {
@@ -37,8 +39,8 @@ app.get('/db', function (request, response) {
   response.render("./index.html");//response.send("/db.html"/*, {results: result.rows} * /); 
 }
     });
-  });*/
-});
+  });* /
+});*/
 
 app.get('/css/:path', function (req, res) {
   res.sendFile(__dirname + '/css/' + req.params.path);
