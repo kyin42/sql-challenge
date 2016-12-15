@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.get('\/((index\.html)?)', function (req, res) {
-  res.render("./index.html");
+  res.render("/index.html");
 });
 
 var pg = require('pg');
