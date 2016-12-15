@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 app.get('\/((index\.html)?)', function (req, res) {
   res.render("./index.ejs");
 });
+var pg = require('pg');
 
 app.get('\/db', function (req, res) {
 	pg.connect(process.env.DATABASE_URL, function(err, client, done){
