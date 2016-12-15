@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.get('\/((index\.html)?)', function (req, res) {
-  res.render("/index.html");
+  res.render("./index.html");
 });
 
 var pg = require('pg');
@@ -26,9 +26,10 @@ app.get('/db', function (request, response) {
       done();
     	console.log(result.rows[0]);
       if (err)
-       { console.error(err); response.send("Error " + err); }
+       { console.error(err); response.send("Error from db " + err); }
       else
-       { response.send("/db.html"/*, {results: result.rows} */); }
+       { 
+  res.render("./index.html");/*response.send("/db.html"/*, {results: result.rows} */); }
     });
   });
 });
