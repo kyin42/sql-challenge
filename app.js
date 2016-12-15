@@ -20,14 +20,25 @@ app.get('\/((index\.html)?)', function (req, res) {
 });
 
 app.get('\/db', function (req, res) {
-  res.render("./index.ejs");
+	pg.connect(process.env.DATABASE_URL, function(err, client, done){
+		client.query('SELECT * FROM posts',function(err, result){
+			done();
+			console.log(result.rows[0]);
+			if(err){
+				console.error(err);
+				response.send("Error from db " + err);
+			} else{
+  				res.render("./index.ejs");
+			}
+		});
+	});
 });
 
 //var pg = require('pg');
-
-/*app.get('/db', function (req, res) {
+/*
+app.get('/db', function (req, res) {
   response.render("./index.ejs");
-	/*console.log(process.env.DATABASE_URL);
+	console.log(process.env.DATABASE_URL);
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM posts', function(err, result) {
       done();
@@ -36,10 +47,10 @@ app.get('\/db', function (req, res) {
        { console.error(err); response.send("Error from db " + err); }
       else
        { 
-  response.render("./index.html");//response.send("/db.html"/*, {results: result.rows} * /); 
+  response.render("./index.html");response.send("/db.html", {results: result.rows}); 
 }
     });
-  });* /
+  });
 });*/
 
 app.get('/css/:path', function (req, res) {
