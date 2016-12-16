@@ -123,6 +123,17 @@ app.get('\/:id', function (req, res) {
     });
 });
 
+app.git('\/:id/delete', function (req, res) {
+	db.none('delete from posts where id = $1', parseInt(req.params.id))
+    .then(function (result) {
+      res.redirect('/');
+    })
+    .catch(function (err) {
+    	console.log("error form db: " + err);
+      	res.render("./index.ejs", {dbsuccess: false});
+    });
+})
+
 
 
 
