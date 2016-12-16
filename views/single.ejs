@@ -29,6 +29,7 @@
         <% if(dbsuccess){ %>
                 <div class="row">
                     <div class="about-section single">
+                        <div style="float:right"><a href="/<%= results[i].id %>/edit">edit</a><a href="/<%= results[i].id %>/delete">delete</a></div>
                         <div class="title"><%= results.name %></div>
                         <div class="body">
                             <%= results.content %>

@@ -31,6 +31,7 @@
                 <div>
                     
                 <h1>Blog</h1>
+                    <div style="float:right"><a href="/new">new post</a></div>
                 </div>
             </div>
         </div>
@@ -38,7 +39,8 @@
             <% for(var i=0; i<results.length; i++) { %>
                 <div class="row">
                     <div class="about-section">
-                        <div class="title"><%= results[i].name %></div>
+                        <div style="float:right"><a href="/<%= results[i].id %>/edit">edit</a><a href="/<%= results[i].id %>/delete">delete</a></div>
+                        <div class="title"><a href="/<%= results[i].id %>"><%= results[i].name %></a></div>
                         <div class="body">
                             <%= results[i].content %>
                         </div>
