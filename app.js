@@ -15,20 +15,60 @@ app.set('views', __dirname+'/views');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
-var pg = require('pg');
+var promise = require('bluebird');
+
+var options = {
+  // Initialization Options
+  promiseLib: promise
+};
+
+var pgp = require('pg-promise')(options);
+var connectionString = process.env.DATABASE_URL;
+var db = pgp(connectionString);
+
+/*
+module.exports = {
+  getAllPuppies: getAllPuppies,
+  getSinglePuppy: getSinglePuppy,
+  createPuppy: createPuppy,
+  updatePuppy: updatePuppy,
+  removePuppy: removePuppy
+};*/
+
+/*
+function getAllPuppies(req, res, next) {
+  db.any('select * from pups')
+    .then(function (data) {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved ALL puppies'
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}*/
+
+/*
+router.get('/api/puppies', db.getAllPuppies);
+router.get('/api/puppies/:id', db.getSinglePuppy);
+router.post('/api/puppies', db.createPuppy);
+router.put('/api/puppies/:id', db.updatePuppy);
+router.delete('/api/puppies/:id', db.removePuppy);
+*/
+
+
 
 app.get('\/((index\.html)?)', function (req, res) {
-	pg.connect(process.env.DATABASE_URL, function(err, client, done){
-		client.query('SELECT * FROM posts',function(err, result){
-			done();
-			if(err){
-				console.error(err);
-				res.render("./index.ejs", {dbsuccess: false});
-			} else{
-  				res.render("./index.ejs", {dbsuccess: true,results: result.rows});
-			}
-		});
-	});
+	db.any('select * from pups')
+    .then(function (data) {
+	    res.render("./index.ejs", {dbsuccess: true,results: data});
+    })
+    .catch(function (err) {
+      	res.render("./index.ejs", {dbsuccess: false});
+    });
 });
 
 //var pg = require('pg');
