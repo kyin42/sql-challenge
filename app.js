@@ -77,13 +77,15 @@ app.get('\/new', function (req, res) {
 });
 
 app.post('\/new', function (req, res) {
-	db.one('select * from posts where id = $1', parseInt(req.params.id))
-    .then(function (data) { 
-	    res.render("./single.ejs", {dbsuccess: true, results: data});
+ 	db.none('insert into posts(title, content)' +
+      'values($1, $2)',
+    req.body.title, req.body.content)
+    .then(function () {
+      res.redirect('/');
     })
     .catch(function (err) {
     	console.log("error form db: " + err);
-      	res.render("./single.ejs", {dbsuccess: false});
+      	res.render("./index.ejs", {dbsuccess: false});
     });
 });
 
@@ -99,13 +101,14 @@ app.get('\/:id/edit', function (req, res) {
 });
 
 app.post('\/:id/edit', function (req, res) {
-	db.one('select * from posts where id = $1', parseInt(req.params.id))
-    .then(function (data) { 
-	    res.render("./single.ejs", {dbsuccess: true, results: data});
+	db.none('update posts set title=$1, content=$2 where id=$3',
+    [req.body.title, req.body.content, parseInt(req.params.id)])
+    .then(function () {
+      res.redirect('/');
     })
     .catch(function (err) {
     	console.log("error form db: " + err);
-      	res.render("./single.ejs", {dbsuccess: false});
+      	res.render("./index.ejs", {dbsuccess: false});
     });
 });
 
