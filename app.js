@@ -77,7 +77,7 @@ app.get('\/new', function (req, res) {
 });
 
 app.post('\/new', function (req, res) {
-	console.log(req.body.content);
+	console.log(req.body.name + " " + req.body.content);
  	db.none('insert into posts(name, content)' +
       'values($1, $2)',
     req.body.name, req.body.content)
