@@ -62,10 +62,10 @@ router.delete('/api/puppies/:id', db.removePuppy);
 
 
 app.get('\/((index\.html)?)', function (req, res) {
-	db.any('select * from pups')
+	db.any('select * from posts')
     .then(function (data) {
     	console.log("success");
-	    res.render("./index.ejs", {dbsuccess: true,results: data});
+	    res.render("./index.ejs", {dbsuccess: true, results: data});
     })
     .catch(function (err) {
     	console.log("error form db: " +err)
