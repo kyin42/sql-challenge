@@ -36,12 +36,18 @@
         </div>
 
         <% if(dbsuccess){  console.log(results); %>
-                <div>
+                <div class="about-section">
                     <div class="title">Edit post</div>
                     <form name="edit form" action="./edit" method="post" class="contact-form" >
-                        content: <input type="text" class="input i1" name="name" placeholder="Place title here." value="<%= results.name %>">
-                        content: <input type="textarea" class="input i1" name="content" placeholder="Place content here." value="<%= results.content %>">
-
+                          <div class="form-group">
+                            <label for="title">Title:</label>
+                            <input type="text" class="form-control" name="name" id="title" placeholder="Place title here." value="<%= results.name %>">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Content:</label>
+                            <textarea type="email" class="form-control" name="content" placeholder="Place content here." value="<%= results.content %>">
+                          </div>
+                          <button type="submit" class="btn btn-default">Submit</button>
                         <input type="submit" class="button" value="Submit">
                     </form>
                 </div>

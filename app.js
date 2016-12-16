@@ -73,7 +73,7 @@ app.get('\/((index\.html)?)', function (req, res) {
 });
 
 app.get('\/new', function (req, res) {
-	res.render("./new.ejs", {dbsuccess: true, results: data});
+	res.render("./new.ejs");
 });
 
 app.post('\/new', function (req, res) {
