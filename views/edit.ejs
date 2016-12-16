@@ -37,17 +37,16 @@
 
         <% if(dbsuccess){  console.log(results); %>
                 <div class="about-section">
-                    <form name="edit form" action="./edit" method="post" class="contact-form" >
-                          <div class="form-group">
-                            <label for="title">Title:</label>
-                            <input type="text" class="form-control" name="name" id="title" placeholder="Place title here." value="<%= results.name %>">
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputEmail1">Content:</label>
-                            <textarea type="email" class="form-control" name="content" rows="3" placeholder="Place content here."><%= results.content %></textarea>
-                          </div>
-                          <button type="submit" class="btn btn-default">Submit</button>
-                        <input type="submit" class="button" value="Submit">
+                    <form name="editform" action="./edit" method="post" class="contact-form" >
+                      <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" name="name" id="title" placeholder="Place title here." value="<%= results.name %>">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Content:</label>
+                        <textarea type="email" class="form-control" name="content" rows="3" placeholder="Place content here."><%= results.content %></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-default">Submit</button>
                     </form>
                 </div>
         <% } else { %>
