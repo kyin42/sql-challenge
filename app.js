@@ -64,33 +64,67 @@ router.delete('/api/puppies/:id', db.removePuppy);
 app.get('\/((index\.html)?)', function (req, res) {
 	db.any('select * from posts')
     .then(function (data) {
-    	console.log("success");
 	    res.render("./index.ejs", {dbsuccess: true, results: data});
     })
     .catch(function (err) {
-    	console.log("error form db: " +err)
+    	console.log("error form db: " + err);
       	res.render("./index.ejs", {dbsuccess: false});
     });
 });
 
-//var pg = require('pg');
-/*
-app.get('/db', function (req, res) {
-  response.render("./index.ejs");
-	console.log(process.env.DATABASE_URL);
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM posts', function(err, result) {
-      done();
-    	console.log(result.rows[0]);
-      if (err)
-       { console.error(err); response.send("Error from db " + err); }
-      else
-       { 
-  response.render("./index.html");response.send("/db.html", {results: result.rows}); 
-}
+app.get('\/new', function (req, res) {
+	res.render("./new.ejs", {dbsuccess: true, results: data});
+});
+
+app.post('\/new', function (req, res) {
+	db.one('select * from posts where id = $1', parseInt(req.params.id))
+    .then(function (data) { 
+	    res.render("./single.ejs", {dbsuccess: true, results: data});
+    })
+    .catch(function (err) {
+    	console.log("error form db: " + err);
+      	res.render("./single.ejs", {dbsuccess: false});
     });
-  });
-});*/
+});
+
+app.get('\/:id/edit', function (req, res) {
+	db.one('select * from posts where id = $1', parseInt(req.params.id))
+    .then(function (data) { 
+	    res.render("./edit.ejs", {dbsuccess: true, results: data});
+    })
+    .catch(function (err) {
+    	console.log("error form db: " + err);
+      	res.render("./edit.ejs", {dbsuccess: false});
+    });
+});
+
+app.post('\/:id/edit', function (req, res) {
+	db.one('select * from posts where id = $1', parseInt(req.params.id))
+    .then(function (data) { 
+	    res.render("./single.ejs", {dbsuccess: true, results: data});
+    })
+    .catch(function (err) {
+    	console.log("error form db: " + err);
+      	res.render("./single.ejs", {dbsuccess: false});
+    });
+});
+
+app.get('\/:id', function (req, res) {
+	db.one('select * from posts where id = $1', parseInt(req.params.id))
+    .then(function (data) { 
+	    res.render("./single.ejs", {dbsuccess: true, results: data});
+    })
+    .catch(function (err) {
+    	console.log("error form db: " + err);
+      	res.render("./single.ejs", {dbsuccess: false});
+    });
+});
+
+
+
+
+
+
 
 app.get('/css/:path', function (req, res) {
   res.sendFile(__dirname + '/css/' + req.params.path);
