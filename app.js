@@ -77,9 +77,9 @@ app.get('\/new', function (req, res) {
 });
 
 app.post('\/new', function (req, res) {
- 	db.none('insert into posts(title, content)' +
+ 	db.none('insert into posts(name, content)' +
       'values($1, $2)',
-    req.body.title, req.body.content)
+    req.body.name, req.body.content)
     .then(function () {
       res.redirect('/');
     })
@@ -101,8 +101,8 @@ app.get('\/:id/edit', function (req, res) {
 });
 
 app.post('\/:id/edit', function (req, res) {
-	db.none('update posts set title=$1, content=$2 where id=$3',
-    [req.body.title, req.body.content, parseInt(req.params.id)])
+	db.none('update posts set name=$1, content=$2 where id=$3',
+    [req.body.name, req.body.content, parseInt(req.params.id)])
     .then(function () {
       res.redirect('/');
     })
