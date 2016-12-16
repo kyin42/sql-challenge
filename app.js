@@ -64,59 +64,59 @@ router.delete('/api/puppies/:id', db.removePuppy);
 app.get('\/((index\.html)?)', function (req, res) {
 	db.any('select * from posts')
     .then(function (data) {
-	    res.render("./index.ejs", {dbsuccess: true, results: data});
+	    res.render("./index.ejs", {directory: __dirname,dbsuccess: true, results: data});
     })
     .catch(function (err) {
     	console.log("error form db: " + err);
-      	res.render("./index.ejs", {dbsuccess: false});
+      	res.render("./index.ejs", {directory: __dirname,dbsuccess: false});
     });
 });
 
 app.get('\/new', function (req, res) {
-	res.render("./new.ejs", {dbsuccess: true, results: data});
+	res.render("./new.ejs", {directory: __dirname,dbsuccess: true, results: data});
 });
 
 app.post('\/new', function (req, res) {
 	db.one('select * from posts where id = $1', parseInt(req.params.id))
     .then(function (data) { 
-	    res.render("./single.ejs", {dbsuccess: true, results: data});
+	    res.render("./single.ejs", {directory: __dirname,dbsuccess: true, results: data});
     })
     .catch(function (err) {
     	console.log("error form db: " + err);
-      	res.render("./single.ejs", {dbsuccess: false});
+      	res.render("./single.ejs", {directory: __dirname,dbsuccess: false});
     });
 });
 
 app.get('\/:id/edit', function (req, res) {
 	db.one('select * from posts where id = $1', parseInt(req.params.id))
     .then(function (data) { 
-	    res.render("./edit.ejs", {dbsuccess: true, results: data});
+	    res.render("./edit.ejs", {directory: __dirname,dbsuccess: true, results: data});
     })
     .catch(function (err) {
     	console.log("error form db: " + err);
-      	res.render("./edit.ejs", {dbsuccess: false});
+      	res.render("./edit.ejs", {directory: __dirname,dbsuccess: false});
     });
 });
 
 app.post('\/:id/edit', function (req, res) {
 	db.one('select * from posts where id = $1', parseInt(req.params.id))
     .then(function (data) { 
-	    res.render("./single.ejs", {dbsuccess: true, results: data});
+	    res.render("./single.ejs", {directory: __dirname,dbsuccess: true, results: data});
     })
     .catch(function (err) {
     	console.log("error form db: " + err);
-      	res.render("./single.ejs", {dbsuccess: false});
+      	res.render("./single.ejs", {directory: __dirname,dbsuccess: false});
     });
 });
 
 app.get('\/:id', function (req, res) {
 	db.one('select * from posts where id = $1', parseInt(req.params.id))
     .then(function (data) { 
-	    res.render("./single.ejs", {dbsuccess: true, results: data});
+	    res.render("./single.ejs", {directory: __dirname,dbsuccess: true, results: data});
     })
     .catch(function (err) {
     	console.log("error form db: " + err);
-      	res.render("./single.ejs", {dbsuccess: false});
+      	res.render("./single.ejs", {directory: __dirname,dbsuccess: false});
     });
 });
 
