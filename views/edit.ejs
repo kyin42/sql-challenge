@@ -30,14 +30,13 @@
             <div class="title-section">
                 <div>
                     
-                <h1>Blog</h1>
+                <h1>Edit post</h1>
                 </div>
             </div>
         </div>
 
         <% if(dbsuccess){  console.log(results); %>
                 <div class="about-section">
-                    <div class="title">Edit post</div>
                     <form name="edit form" action="./edit" method="post" class="contact-form" >
                           <div class="form-group">
                             <label for="title">Title:</label>
@@ -45,7 +44,7 @@
                           </div>
                           <div class="form-group">
                             <label for="exampleInputEmail1">Content:</label>
-                            <textarea type="email" class="form-control" name="content" rows="3" placeholder="Place content here." value="<%= results.content %>"></textarea>
+                            <textarea type="email" class="form-control" name="content" rows="3" placeholder="Place content here."><%= results.content %></textarea>
                           </div>
                           <button type="submit" class="btn btn-default">Submit</button>
                         <input type="submit" class="button" value="Submit">
